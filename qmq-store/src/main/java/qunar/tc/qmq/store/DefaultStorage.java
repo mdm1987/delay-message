@@ -20,9 +20,7 @@ import com.google.common.collect.Table;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qunar.tc.qmq.meta.BrokerRole;
 import qunar.tc.qmq.base.RawMessage;
-import qunar.tc.qmq.monitor.QMon;
 import qunar.tc.qmq.store.action.ActionEvent;
 import qunar.tc.qmq.store.action.MaxSequencesUpdater;
 import qunar.tc.qmq.store.action.PullLogBuilder;
@@ -53,7 +51,7 @@ public class DefaultStorage implements Storage {
     private final ConsumerLogManager consumerLogManager;
     private final PullLogManager pullLogManager;
     private final ActionLog actionLog;
-    private final ConsumeQueueManager consumeQueueManager;
+    //private final ConsumeQueueManager consumeQueueManager;
 
     private final CheckpointManager checkpointManager;
 
@@ -69,17 +67,17 @@ public class DefaultStorage implements Storage {
     private final PeriodicFlushService messageLogFlushService;
     private final PeriodicFlushService actionLogFlushService;
 
-    public DefaultStorage(final BrokerRole role, final StorageConfig config, final CheckpointLoader loader) {
+    public DefaultStorage(final StorageConfig config, final CheckpointLoader loader) {
         this.config = config;
         this.consumerLogManager = new ConsumerLogManager(config);
         this.messageLog = new MessageLog(config, consumerLogManager);
         this.pullLogManager = new PullLogManager(config);
         this.actionLog = new ActionLog(config);
 
-        this.checkpointManager = new CheckpointManager(role, config, loader);
+        this.checkpointManager = new CheckpointManager(config, loader);
         this.checkpointManager.fixOldVersionCheckpointIfShould(consumerLogManager, pullLogManager);
         // must init after offset manager created
-        this.consumeQueueManager = new ConsumeQueueManager(this);
+        //this.consumeQueueManager = new ConsumeQueueManager(this);
 
         this.pullLogFlusher = new PullLogFlusher(config, checkpointManager, pullLogManager);
         this.actionEventBus = new FixedExecOrderEventBus();
@@ -253,7 +251,7 @@ public class DefaultStorage implements Storage {
                 if (messageBuffer != null && messageBuffer.retain()) {
                     result.addSegmentBuffer(messageBuffer);
                 } else {
-                    QMon.readMessageReturnNullCountInc(subject);
+                    ////QMon.readMessageReturnNullCountInc(subject);
                     LOG.warn("read message log failed. consumerLogSequence: {}, wrote consumerLogSequence: {}, wrote bytes: {}, payload consumerLogSequence: {}",
                             nextBeginSequence, entry.getWroteOffset(), entry.getWroteBytes(), entry.getHeaderSize());
 
@@ -346,7 +344,7 @@ public class DefaultStorage implements Storage {
 
     @Override
     public void updateConsumeQueue(String subject, String group, int consumeFromWhereCode) {
-        final ConsumerLog consumerLog = consumerLogManager.getConsumerLog(subject);
+        /*final ConsumerLog consumerLog = consumerLogManager.getConsumerLog(subject);
         if (consumerLog == null) {
             LOG.warn("没有对应的consumerLog, subject:{}", subject);
             return;
@@ -363,12 +361,12 @@ public class DefaultStorage implements Storage {
             case LATEST:
                 consumeQueueManager.update(subject, group, bound.getMaxOffset());
                 break;
-        }
+        }*/
     }
 
     @Override
     public void disableLagMonitor(String subject, String group) {
-        consumeQueueManager.disableLagMonitor(subject, group);
+        //consumeQueueManager.disableLagMonitor(subject, group);
     }
 
     @Override
@@ -383,7 +381,7 @@ public class DefaultStorage implements Storage {
         }
     }
 
-    @Override
+    /*@Override
     public ConsumeQueue locateConsumeQueue(String subject, String group) {
         return consumeQueueManager.getOrCreate(subject, group);
     }
@@ -391,7 +389,7 @@ public class DefaultStorage implements Storage {
     @Override
     public Map<String, ConsumeQueue> locateSubjectConsumeQueues(String subject) {
         return consumeQueueManager.getBySubject(subject);
-    }
+    }*/
 
     @Override
     public <T> void registerEventListener(final Class<T> clazz, final FixedExecOrderEventBus.Listener<T> listener) {

@@ -19,7 +19,7 @@ package qunar.tc.qmq.store;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qunar.tc.qmq.concurrent.NamedThreadFactory;
-import qunar.tc.qmq.monitor.QMon;
+//import qunar.tc.qmq.monitor.//QMon;
 import qunar.tc.qmq.store.action.ActionEvent;
 import qunar.tc.qmq.store.event.FixedExecOrderEventBus;
 
@@ -73,7 +73,7 @@ public class PullLogFlusher implements FixedExecOrderEventBus.Listener<ActionEve
             return;
         }
 
-        QMon.pullLogFlusherExceedCheckpointIntervalCountInc();
+        //QMon.pullLogFlusherExceedCheckpointIntervalCountInc();
         submitFlushTask();
     }
 
@@ -88,10 +88,10 @@ public class PullLogFlusher implements FixedExecOrderEventBus.Listener<ActionEve
                 pullLogManager.flush();
                 checkpointManager.saveActionCheckpointSnapshot(snapshot);
             } catch (Exception e) {
-                QMon.pullLogFlusherFlushFailedCountInc();
+                //QMon.pullLogFlusherFlushFailedCountInc();
                 LOG.error("flush pull log failed.", e);
             } finally {
-                QMon.pullLogFlusherElapsedPerExecute(System.currentTimeMillis() - start);
+                //QMon.pullLogFlusherElapsedPerExecute(System.currentTimeMillis() - start);
             }
         });
     }

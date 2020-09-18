@@ -19,7 +19,7 @@ package qunar.tc.qmq.store;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qunar.tc.qmq.base.RawMessage;
-import qunar.tc.qmq.monitor.QMon;
+//import qunar.tc.qmq.monitor.//QMon;
 import qunar.tc.qmq.utils.Crc32;
 
 import java.io.File;
@@ -147,7 +147,7 @@ public class MessageLog implements AutoCloseable {
         try {
             logManager.flush();
         } finally {
-            QMon.flushMessageLogTimer(System.currentTimeMillis() - start);
+            //QMon.flushMessageLogTimer(System.currentTimeMillis() - start);
         }
     }
 

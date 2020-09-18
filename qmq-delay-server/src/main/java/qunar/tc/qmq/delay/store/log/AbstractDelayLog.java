@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 import qunar.tc.qmq.delay.store.model.AppendLogResult;
 import qunar.tc.qmq.delay.store.model.LogRecord;
 import qunar.tc.qmq.delay.store.model.RecordResult;
-import qunar.tc.qmq.protocol.producer.MessageProducerCode;
+import qunar.tc.qmq.delay.store.log.MessageProducerCode;
 import qunar.tc.qmq.store.PutMessageStatus;
 
 /**

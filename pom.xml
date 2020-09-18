@@ -80,11 +80,6 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>qmq-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>qmq-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -96,11 +91,6 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>qmq-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>qmq-server-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

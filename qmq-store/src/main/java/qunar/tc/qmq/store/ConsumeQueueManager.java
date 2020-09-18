@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.store;
 
@@ -22,10 +23,12 @@ import com.google.common.collect.Table;
 import java.util.Collections;
 import java.util.Map;
 
+*/
 /**
  * @author keli.wang
  * @since 2017/7/31
- */
+ *//*
+
 public class ConsumeQueueManager {
     private final Table<String, String, ConsumeQueue> queues;
     private final Storage storage;
@@ -72,3 +75,4 @@ public class ConsumeQueueManager {
         consumeQueue.disableLagMonitor(subject, group);
     }
 }
+*/

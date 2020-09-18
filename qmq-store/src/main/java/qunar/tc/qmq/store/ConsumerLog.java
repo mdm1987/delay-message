@@ -18,7 +18,7 @@ package qunar.tc.qmq.store;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qunar.tc.qmq.monitor.QMon;
+//import qunar.tc.qmq.monitor.//QMon;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -93,7 +93,7 @@ public class ConsumerLog {
         final long startOffset = startIndex * CONSUMER_LOG_UNIT_BYTES;
         final LogSegment segment = logManager.locateSegment(startOffset);
         if (segment == null) {
-            QMon.hitDeletedConsumerLogSegmentCountInc(subject);
+            //QMon.hitDeletedConsumerLogSegmentCountInc(subject);
             return null;
         } else {
             return segment.selectSegmentBuffer((int) (startOffset % CONSUMER_LOG_SIZE));
@@ -104,7 +104,7 @@ public class ConsumerLog {
         long computedMinSequence = getMinOffset();
         if (computedMinSequence < sequence) {
             this.minSequence = sequence;
-            QMon.adjustConsumerLogMinOffset(subject);
+            //QMon.adjustConsumerLogMinOffset(subject);
             LOG.info("adjust consumer log {} min offset from {} to {}.", subject, computedMinSequence, minSequence);
         }
     }
@@ -130,7 +130,7 @@ public class ConsumerLog {
 
     public void flush() {
         logManager.flush();
-        QMon.flushConsumerLogCountInc(subject);
+        //QMon.flushConsumerLogCountInc(subject);
     }
 
     public void close() {

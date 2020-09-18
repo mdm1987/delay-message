@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.delay.sender;
 
@@ -23,12 +24,15 @@ import qunar.tc.qmq.protocol.Datagram;
 
 import java.util.List;
 
+*/
 /**
  * @author xufeng.deng dennisdxf@gmail.com
  * @since 2018-07-23 11:19
- */
+ *//*
+
 public interface Sender {
     Datagram send(List<ScheduleSetRecord> records, SenderGroup group) throws InterruptedException, RemoteTimeoutException, ClientSendException;
 
     void shutdown();
 }
+*/

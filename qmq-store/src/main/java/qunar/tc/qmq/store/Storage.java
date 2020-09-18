@@ -72,9 +72,9 @@ public interface Storage extends Disposable {
 
     void updateConsumeQueue(String subject, String group, int consumeFromWhereCode);
 
-    ConsumeQueue locateConsumeQueue(final String subject, final String group);
+    //ConsumeQueue locateConsumeQueue(final String subject, final String group);
 
-    Map<String, ConsumeQueue> locateSubjectConsumeQueues(final String subject);
+    //Map<String, ConsumeQueue> locateSubjectConsumeQueues(final String subject);
 
     <T> void registerEventListener(final Class<T> clazz, final FixedExecOrderEventBus.Listener<T> listener);
 

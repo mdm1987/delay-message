@@ -16,7 +16,7 @@
 
 package qunar.tc.qmq.store;
 
-import qunar.tc.qmq.monitor.QMon;
+////import qunar.tc.qmq.monitor.//QMon;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -127,7 +127,7 @@ public class PullLog {
 
     public void flush() {
         logManager.flush();
-        QMon.flushPullLogCountInc();
+        ////QMon.flushPullLogCountInc();
     }
 
     public void close() {

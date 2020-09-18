@@ -23,7 +23,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qunar.tc.qmq.monitor.QMon;
+//import qunar.tc.qmq.monitor.//QMon;
 
 import java.io.File;
 import java.io.IOException;
@@ -121,7 +121,7 @@ public class ConsumerLogManager implements AutoCloseable {
                 log.flush();
             }
         } finally {
-            QMon.flushConsumerLogTimer(System.currentTimeMillis() - start);
+            //QMon.flushConsumerLogTimer(System.currentTimeMillis() - start);
         }
     }
 

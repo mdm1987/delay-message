@@ -31,7 +31,7 @@ import qunar.tc.qmq.delay.ScheduleIndex;
 import qunar.tc.qmq.delay.base.ReceivedDelayMessage;
 import qunar.tc.qmq.delay.base.ReceivedResult;
 import qunar.tc.qmq.delay.config.DefaultStoreConfiguration;
-import qunar.tc.qmq.delay.receiver.Receiver;
+//import qunar.tc.qmq.delay.receiver.Receiver;
 import qunar.tc.qmq.delay.store.model.RawMessageExtend;
 import qunar.tc.qmq.delay.wheel.WheelTickManager;
 
@@ -49,7 +49,7 @@ public class ServerWrapper implements Disposable {
     private ExecutorService receiveMessageExecutorService;
     private DelayLogFacade facade;
     private WheelTickManager wheelTickManager;
-    private Receiver receiver;
+    //private Receiver receiver;
     private DynamicConfig config;
     private DefaultStoreConfiguration storeConfig;
 
@@ -67,7 +67,7 @@ public class ServerWrapper implements Disposable {
         this.facade = new DefaultDelayLogFacade(storeConfig, this::iterateCallback);
         //标记轮操作类
         this.wheelTickManager = new WheelTickManager(storeConfig, facade);
-        this.receiver = new Receiver(config, facade);
+        //this.receiver = new Receiver(config, facade);
     }
 
     //接收处理延迟消息
@@ -110,7 +110,7 @@ public class ServerWrapper implements Disposable {
 
     public static void main(String[] args) {
         try {
-            System.setProperty("qmq.conf","/Users/mudaoming/Downloads/delaymessage/conf");
+            System.setProperty("qmq.conf","E:/delay-message/conf");
             ServerWrapper sw = new ServerWrapper();
             sw.init();
             sw.start();
@@ -122,7 +122,7 @@ public class ServerWrapper implements Disposable {
             ByteBuf body = Unpooled.wrappedBuffer(bytes);
             //String body = "test";
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            RawMessageExtend raw = new RawMessageExtend(header, body,1024, sdf.parse("2020-09-18 08:09:03").getTime());
+            RawMessageExtend raw = new RawMessageExtend(header, body,1024, sdf.parse("2020-09-18 23:42:03").getTime());
             ReceivedDelayMessage message = new ReceivedDelayMessage(raw,new Date().getTime());
             sw.process(message);
             Thread.sleep(300000);

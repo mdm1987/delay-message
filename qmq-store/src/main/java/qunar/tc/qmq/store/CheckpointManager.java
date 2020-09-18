@@ -21,8 +21,6 @@ import com.google.common.collect.Table;
 import io.netty.buffer.ByteBuf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qunar.tc.qmq.meta.BrokerRole;
-import qunar.tc.qmq.monitor.QMon;
 import qunar.tc.qmq.store.action.PullAction;
 import qunar.tc.qmq.store.action.RangeAckAction;
 
@@ -49,7 +47,7 @@ public class CheckpointManager implements AutoCloseable {
     private final MessageCheckpoint messageCheckpoint;
     private final ActionCheckpoint actionCheckpoint;
 
-    CheckpointManager(final BrokerRole role, final StorageConfig config, final CheckpointLoader loader) {
+    CheckpointManager(final StorageConfig config, final CheckpointLoader loader) {
         this.messageCheckpointSerde = new MessageCheckpointSerde();
         this.actionCheckpointSerde = new ActionCheckpointSerde();
 
@@ -61,7 +59,7 @@ public class CheckpointManager implements AutoCloseable {
 
         final MessageCheckpoint messageCheckpoint = loadMessageCheckpoint();
         final ActionCheckpoint actionCheckpoint = loadActionCheckpoint();
-        if (needSyncCheckpoint(role, messageCheckpoint, actionCheckpoint)) {
+        if (needSyncCheckpoint(messageCheckpoint, actionCheckpoint)) {
             // TODO(keli.wang): must try to cleanup this messy...
             final ByteBuf buf = loader.loadCheckpoint();
             buf.readByte();
@@ -107,10 +105,10 @@ public class CheckpointManager implements AutoCloseable {
         }
     }
 
-    private boolean needSyncCheckpoint(final BrokerRole role, final MessageCheckpoint messageCheckpoint, final ActionCheckpoint actionCheckpoint) {
-        if (role != BrokerRole.SLAVE) {
+    private boolean needSyncCheckpoint(final MessageCheckpoint messageCheckpoint, final ActionCheckpoint actionCheckpoint) {
+       /* if (role != BrokerRole.SLAVE) {
             return false;
-        }
+        }*/
 
         return messageCheckpoint.getOffset() < 0 && actionCheckpoint.getOffset() < 0;
     }
@@ -219,7 +217,7 @@ public class CheckpointManager implements AutoCloseable {
         if (maxSequence + 1 < action.getFirstMessageSequence()) {
             long num = action.getFirstMessageSequence() - maxSequence;
             LOG.warn("Maybe lost message. Last message sequence: {}. Current start sequence {} {}:{}", maxSequence, action.getFirstMessageSequence(), subject, group);
-            QMon.maybeLostMessagesCountInc(subject, group, num);
+            ////QMon.maybeLostMessagesCountInc(subject, group, num);
         }
         final long lastMessageSequence = action.getLastMessageSequence();
         if (maxSequence < lastMessageSequence) {

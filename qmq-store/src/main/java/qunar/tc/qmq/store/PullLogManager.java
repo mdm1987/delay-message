@@ -20,7 +20,7 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qunar.tc.qmq.monitor.QMon;
+//import qunar.tc.qmq.monitor.//QMon;
 
 import java.io.File;
 import java.util.Collection;
@@ -109,7 +109,7 @@ public class PullLogManager implements AutoCloseable {
                 log.flush();
             }
         } finally {
-            QMon.flushPullLogTimer(System.currentTimeMillis() - start);
+            //QMon.flushPullLogTimer(System.currentTimeMillis() - start);
         }
     }
 

@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package qunar.tc.qmq.base;
 
 import com.google.common.base.Preconditions;
@@ -26,10 +27,12 @@ import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.TimeUnit;
 
+*/
 /**
  * @author miao.yang susing@gmail.com
  * @date 2012-12-26
- */
+ *//*
+
 public class BaseMessage implements Message, Serializable {
     private static final long serialVersionUID = 303069262539600333L;
 
@@ -143,9 +146,11 @@ public class BaseMessage implements Message, Serializable {
         attrs.put(key.name(), value.getTime());
     }
 
-    /**
+    */
+/**
      * 为了类型属性的稳定此方法一定不能暴漏成public.
-     */
+     *//*
+
     private void setObjectProperty(String name, Object value) {
         if (keyNames.contains(name))
             throw new IllegalArgumentException("property name [" + name + "] is protected. ");
@@ -419,3 +424,4 @@ public class BaseMessage implements Message, Serializable {
     }
 
 }
+*/

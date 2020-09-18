@@ -30,7 +30,7 @@ import qunar.tc.qmq.delay.store.model.ScheduleSetRecord;
 import qunar.tc.qmq.delay.store.visitor.LogVisitor;
 import qunar.tc.qmq.delay.wheel.WheelLoadCursor;
 import qunar.tc.qmq.store.SegmentBuffer;
-import qunar.tc.qmq.sync.DelaySyncRequest;
+//import qunar.tc.qmq.sync.DelaySyncRequest;
 
 import java.nio.ByteBuffer;
 import java.util.List;
@@ -83,10 +83,6 @@ public class DefaultDelayLogFacade implements DelayLogFacade {
         return dispatchLog.getMaxOffset(dispatchSegmentBaseOffset);
     }
 
-    @Override
-    public DelaySyncRequest.DispatchLogSyncRequest getDispatchLogSyncMaxRequest() {
-        return dispatchLog.getSyncMaxRequest();
-    }
 
     @Override
     public boolean appendMessageLogData(final long startOffset, final ByteBuffer buffer) {

@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.delay.sender;
 
@@ -34,10 +35,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+*/
 /**
  * @author xufeng.deng dennisdxf@gmail.com
  * @since 2018-07-25 13:59
- */
+ *//*
+
 public class SenderProcessor implements DelayProcessor, Processor<ScheduleIndex>, SenderGroup.ResultHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(SenderProcessor.class);
 
@@ -47,8 +50,6 @@ public class SenderProcessor implements DelayProcessor, Processor<ScheduleIndex>
     private static final int BATCH_SIZE = 30;
 
     private final DynamicConfig config;
-    private final SenderExecutor senderExecutor;
-    private final BrokerService brokerService;
     private final DelayLogFacade facade;
 
     private BatchExecutor<ScheduleIndex> batchExecutor;
@@ -162,3 +163,4 @@ public class SenderProcessor implements DelayProcessor, Processor<ScheduleIndex>
         senderExecutor.destroy();
     }
 }
+*/

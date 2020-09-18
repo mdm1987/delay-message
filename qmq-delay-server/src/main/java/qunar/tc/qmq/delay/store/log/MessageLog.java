@@ -20,14 +20,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qunar.tc.qmq.base.MessageHeader;
 import qunar.tc.qmq.delay.config.StoreConfiguration;
-import qunar.tc.qmq.delay.monitor.QMon;
+//import qunar.tc.qmq.delay.monitor.QMon;
 import qunar.tc.qmq.delay.store.VisitorAccessor;
 import qunar.tc.qmq.delay.store.model.AppendLogResult;
 import qunar.tc.qmq.delay.store.model.AppendMessageRecordResult;
 import qunar.tc.qmq.delay.store.model.LogRecord;
 import qunar.tc.qmq.delay.store.model.RawMessageExtend;
 import qunar.tc.qmq.delay.store.visitor.LogVisitor;
-import qunar.tc.qmq.protocol.producer.MessageProducerCode;
+//import qunar.tc.qmq.delay.store.log.MessageProducerCode;
 import qunar.tc.qmq.store.PeriodicFlushService;
 import qunar.tc.qmq.store.PutMessageStatus;
 import qunar.tc.qmq.store.SegmentBuffer;
@@ -83,7 +83,7 @@ public class MessageLog implements Log<MessageLog.MessageRecordMeta, RawMessageE
     }
 
     private void appendFailedByMessageIllegal(String subject) {
-        QMon.appendFailedByMessageIllegal(subject);
+        //QMon.appendFailedByMessageIllegal(subject);
     }
 
     @Override
@@ -125,11 +125,11 @@ public class MessageLog implements Log<MessageLog.MessageRecordMeta, RawMessageE
     }
 
     private static void appendFailed(String subject) {
-        QMon.appendFailed(subject);
+        //QMon.appendFailed(subject);
     }
 
     private static void appendTimer(String subject, long cost) {
-        QMon.appendTimer(subject, cost);
+        //QMon.appendTimer(subject, cost);
     }
 
     public long getMinOffset() {

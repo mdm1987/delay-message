@@ -19,7 +19,7 @@ package qunar.tc.qmq.store;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qunar.tc.qmq.monitor.QMon;
+//import qunar.tc.qmq.monitor.//QMon;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -114,7 +114,7 @@ public class ActionLog {
         try {
             logManager.flush();
         } finally {
-            QMon.flushActionLogTimer(System.currentTimeMillis() - start);
+            //QMon.flushActionLogTimer(System.currentTimeMillis() - start);
         }
     }
 

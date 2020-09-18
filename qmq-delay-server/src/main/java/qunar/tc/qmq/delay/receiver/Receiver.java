@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.delay.receiver;
 
@@ -31,12 +32,12 @@ import qunar.tc.qmq.configuration.DynamicConfig;
 import qunar.tc.qmq.delay.DelayLogFacade;
 import qunar.tc.qmq.delay.base.ReceivedDelayMessage;
 import qunar.tc.qmq.delay.base.ReceivedResult;
-import qunar.tc.qmq.delay.monitor.QMon;
+import qunar.tc.qmq.delay.monitor.//QMon;
 import qunar.tc.qmq.delay.receiver.filter.OverDelayException;
 import qunar.tc.qmq.delay.receiver.filter.ReceiveFilterChain;
 import qunar.tc.qmq.delay.store.model.RawMessageExtend;
 import qunar.tc.qmq.protocol.*;
-import qunar.tc.qmq.protocol.producer.MessageProducerCode;
+import qunar.tc.qmq.delay.store.log.MessageProducerCode;
 import qunar.tc.qmq.sync.DelaySyncRequest;
 import qunar.tc.qmq.util.RemotingBuilder;
 import qunar.tc.qmq.utils.CharsetUtils;
@@ -50,10 +51,12 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 import static qunar.tc.qmq.delay.receiver.filter.OverDelayFilter.TWO_YEAR_MILLIS;
 
+*/
 /**
  * @author xufeng.deng dennisdxf@gmail.com
  * @since 2018-07-26 14:46
- */
+ *//*
+
 public class Receiver {
     private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
 
@@ -118,10 +121,10 @@ public class Receiver {
 
     private void monitorMessageReceived(long receiveTime, String subject) {
         if (RetrySubjectUtils.isRetrySubject(subject) || RetrySubjectUtils.isDeadRetrySubject(subject)) {
-            QMon.receivedRetryMessagesCountInc(subject);
+            //QMon.receivedRetryMessagesCountInc(subject);
         }
-        QMon.receivedMessagesCountInc(subject);
-        QMon.produceTime(subject, System.currentTimeMillis() - receiveTime);
+        //QMon.receivedMessagesCountInc(subject);
+        //QMon.produceTime(subject, System.currentTimeMillis() - receiveTime);
     }
 
     @Subscribe
@@ -140,7 +143,7 @@ public class Receiver {
     }
 
     private void notAllowed(ReceivedDelayMessage message) {
-        QMon.rejectReceivedMessageCountInc(message.getSubject());
+        //QMon.rejectReceivedMessageCountInc(message.getSubject());
         end(message, new ReceivedResult(message.getMessageId(), MessageProducerCode.SUBJECT_NOT_ASSIGNED, "message rejected"));
     }
 
@@ -150,7 +153,7 @@ public class Receiver {
             return false;
         }
 
-        QMon.receivedIllegalSubjectMessagesCountInc(trimmedSubject);
+        //QMon.receivedIllegalSubjectMessagesCountInc(trimmedSubject);
         LOGGER.error("received message with illegal subject. subject: {}", subject);
         return true;
     }
@@ -168,7 +171,7 @@ public class Receiver {
     }
 
     private void brokerReadOnly(ReceivedDelayMessage message) {
-        QMon.delayBrokerReadOnlyMessageCountInc(message.getSubject());
+        //QMon.delayBrokerReadOnlyMessageCountInc(message.getSubject());
         end(message, new ReceivedResult(message.getMessageId(), MessageProducerCode.BROKER_READ_ONLY, "BROKER_READ_ONLY"));
     }
 
@@ -188,7 +191,7 @@ public class Receiver {
 
     private void overDelay(final ReceivedDelayMessage message) {
         LOGGER.warn("received delay message over delay,message:{}", message);
-        QMon.overDelay(message.getSubject());
+        //QMon.overDelay(message.getSubject());
         adjustScheduleTime(message);
     }
 
@@ -199,7 +202,7 @@ public class Receiver {
 
     private void error(ReceivedDelayMessage message, Throwable e) {
         LOGGER.error("delay broker receive message error,subject:{} ,id:{} ,msg:{}", message.getSubject(), message.getMessageId(), message, e);
-        QMon.receiveFailedCuntInc(message.getSubject());
+        //QMon.receiveFailedCuntInc(message.getSubject());
         end(message, new ReceivedResult(message.getMessageId(), MessageProducerCode.STORE_ERROR, "store error"));
     }
 
@@ -256,3 +259,4 @@ public class Receiver {
     }
 
 }
+*/

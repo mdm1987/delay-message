@@ -17,7 +17,7 @@
 package qunar.tc.qmq.store;
 
 import io.netty.util.internal.PlatformDependent;
-import qunar.tc.qmq.monitor.QMon;
+//import qunar.tc.qmq.monitor.//QMon;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
@@ -47,7 +47,7 @@ abstract class ReferenceObject {
             }
 
             if (REF_CNT_UPDATER.compareAndSet(this, refCnt, refCnt + 1)) {
-                QMon.logSegmentTotalRefCountInc();
+                //QMon.logSegmentTotalRefCountInc();
                 return true;
             }
         }
@@ -63,7 +63,7 @@ abstract class ReferenceObject {
             if (REF_CNT_UPDATER.compareAndSet(this, refCnt, refCnt - 1)) {
                 final boolean allRefReleased = refCnt == 1;
                 if (!allRefReleased) {
-                    QMon.logSegmentTotalRefCountDec();
+                    //QMon.logSegmentTotalRefCountDec();
                 }
                 return allRefReleased;
             }

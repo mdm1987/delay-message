@@ -22,7 +22,6 @@ import qunar.tc.qmq.delay.store.DefaultDelaySegmentValidator;
 import qunar.tc.qmq.delay.store.appender.DispatchLogAppender;
 import qunar.tc.qmq.store.PeriodicFlushService;
 import qunar.tc.qmq.store.SegmentBuffer;
-import qunar.tc.qmq.sync.DelaySyncRequest;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -73,9 +72,9 @@ public class DispatchLog extends AbstractDelayLog<Boolean> {
         return ((DispatchLogSegmentContainer) container).getMaxOffset(dispatchSegmentBaseOffset);
     }
 
-    public DelaySyncRequest.DispatchLogSyncRequest getSyncMaxRequest() {
+    /*public DelaySyncRequest.DispatchLogSyncRequest getSyncMaxRequest() {
         return ((DispatchLogSegmentContainer) container).getSyncMaxRequest();
-    }
+    }*/
 
     public boolean appendData(long startOffset, long baseOffset, ByteBuffer body) {
         return ((DispatchLogSegmentContainer) container).appendData(startOffset, baseOffset, body);

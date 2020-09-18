@@ -28,7 +28,6 @@ import qunar.tc.qmq.delay.store.model.RecordResult;
 import qunar.tc.qmq.store.AppendMessageResult;
 import qunar.tc.qmq.store.PutMessageStatus;
 import qunar.tc.qmq.store.SegmentBuffer;
-import qunar.tc.qmq.sync.DelaySyncRequest;
 
 import java.io.File;
 import java.io.IOException;
@@ -146,7 +145,7 @@ public class DispatchLogSegmentContainer extends AbstractDelaySegmentContainer<B
         return segment.getWrotePosition();
     }
 
-    DelaySyncRequest.DispatchLogSyncRequest getSyncMaxRequest() {
+    /*DelaySyncRequest.DispatchLogSyncRequest getSyncMaxRequest() {
         final DispatchLogSegment segment = latestSegment();
         if (segment == null) {
             return null;
@@ -161,7 +160,7 @@ public class DispatchLogSegmentContainer extends AbstractDelaySegmentContainer<B
         }
 
         return new DelaySyncRequest.DispatchLogSyncRequest(segment.getSegmentBaseOffset(), segment.getWrotePosition(), lastBaseOffset, lastOffset);
-    }
+    }*/
 
     boolean appendData(long startOffset, long baseOffset, ByteBuffer body) {
         DispatchLogSegment segment = (DispatchLogSegment) segments.get(baseOffset);

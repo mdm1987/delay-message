@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.delay.sender;
 
@@ -25,14 +26,14 @@ import qunar.tc.qmq.broker.BrokerGroupInfo;
 import qunar.tc.qmq.common.Disposable;
 import qunar.tc.qmq.delay.DelayLogFacade;
 import qunar.tc.qmq.delay.ScheduleIndex;
-import qunar.tc.qmq.delay.monitor.QMon;
+import qunar.tc.qmq.delay.monitor.//QMon;
 import qunar.tc.qmq.delay.store.model.ScheduleSetRecord;
 import qunar.tc.qmq.metrics.Metrics;
 import qunar.tc.qmq.netty.exception.ClientSendException;
 import qunar.tc.qmq.protocol.CommandCode;
 import qunar.tc.qmq.protocol.Datagram;
 import qunar.tc.qmq.protocol.QMQSerializer;
-import qunar.tc.qmq.protocol.producer.MessageProducerCode;
+import qunar.tc.qmq.delay.store.log.MessageProducerCode;
 import qunar.tc.qmq.protocol.producer.SendResult;
 
 import java.util.*;
@@ -41,13 +42,15 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static qunar.tc.qmq.delay.monitor.QMon.delayBrokerSendMsgCount;
-import static qunar.tc.qmq.delay.monitor.QMon.delayTime;
+import static qunar.tc.qmq.delay.monitor.//QMon.delayBrokerSendMsgCount;
+import static qunar.tc.qmq.delay.monitor.//QMon.delayTime;
 
+*/
 /**
  * @author xufeng.deng dennisdxf@gmail.com
  * @since 2018-08-16 21:01
- */
+ *//*
+
 public class SenderGroup implements Disposable {
     private static final Logger LOGGER = LoggerFactory.getLogger(SenderGroup.class);
     private static final int MAX_SEND_BATCH_SIZE = 50;
@@ -84,7 +87,7 @@ public class SenderGroup implements Disposable {
             long start = System.currentTimeMillis();
             //根据ScheduleIndex获取完整的消息内容,因为后续需要发送到实时的broker上
             List<ScheduleSetRecord> records = store.recoverLogRecord(list);
-            QMon.loadMsgTime(System.currentTimeMillis() - start);
+            //QMon.loadMsgTime(System.currentTimeMillis() - start);
 
             //发送逻辑
             Datagram response = sendMessages(records, sender);
@@ -182,7 +185,7 @@ public class SenderGroup implements Disposable {
         } catch (Exception e) {
             monitorSendError(records, groupInfo.get(), -1);
         } finally {
-            QMon.sendMsgTime(groupInfo.get().getGroupName(), System.currentTimeMillis() - start);
+            //QMon.sendMsgTime(groupInfo.get().getGroupName(), System.currentTimeMillis() - start);
         }
 
         return null;
@@ -196,7 +199,7 @@ public class SenderGroup implements Disposable {
         if (LOG_LIMITER.tryAcquire()) {
             LOGGER.error("netty delay sender send failed,subject:{},group:{}", subject, groupName);
         }
-        QMon.nettySendMessageFailCount(subject, groupName);
+        //QMon.nettySendMessageFailCount(subject, groupName);
     }
 
     private void monitorSendError(List<ScheduleSetRecord> records, BrokerGroupInfo group, int errorCode) {
@@ -207,7 +210,7 @@ public class SenderGroup implements Disposable {
         if (LOG_LIMITER.tryAcquire()) {
             LOGGER.error("netty delay sender send error,subject:{},group:{},code:{}", subject, group, errorCode);
         }
-        QMon.nettySendMessageFailCount(subject, group.getGroupName());
+        //QMon.nettySendMessageFailCount(subject, group.getGroupName());
     }
 
     @Override
@@ -247,3 +250,4 @@ public class SenderGroup implements Disposable {
     }
 
 }
+*/

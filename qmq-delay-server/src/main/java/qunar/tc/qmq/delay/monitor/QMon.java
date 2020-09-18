@@ -21,7 +21,7 @@ import qunar.tc.qmq.metrics.Metrics;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 需要统一一下，TODO server中的QMon抽离到公共模块
+ * 需要统一一下，TODO server中的//QMon抽离到公共模块
  *
  * @author xufeng.deng dennisdxf@gmail.com
  * @since 2018-07-26 14:49

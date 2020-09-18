@@ -12,14 +12,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.base;
 
+*/
 /**
  * Created by zhaohui.yu
  * 5/4/18
- */
+ *//*
+
 class LargeStringUtil {
     private static final int _32K = (32 * 1024) / 4;
 
@@ -62,3 +65,4 @@ class LargeStringUtil {
         return key + "#part" + idx;
     }
 }
+*/

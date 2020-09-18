@@ -18,7 +18,7 @@ package qunar.tc.qmq.store;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qunar.tc.qmq.monitor.QMon;
+////import qunar.tc.qmq.monitor.//QMon;
 import qunar.tc.qmq.store.event.FixedExecOrderEventBus;
 
 import java.util.Optional;
@@ -47,7 +47,7 @@ public class MessageLogIterateService implements AutoCloseable {
         this.iterateFrom = new LongAdder();
         this.iterateFrom.add(initialMessageIterateFrom(log, checkpointManager));
 
-        QMon.replayMessageLogLag(() -> (double) replayMessageLogLag());
+        ////QMon.replayMessageLogLag(() -> (double) replayMessageLogLag());
     }
 
     private long initialMessageIterateFrom(final MessageLog log, final CheckpointManager checkpointManager) {
@@ -99,7 +99,7 @@ public class MessageLogIterateService implements AutoCloseable {
                 try {
                     processLog();
                 } catch (Throwable e) {
-                    QMon.replayMessageLogFailedCountInc();
+                    ////QMon.replayMessageLogFailedCountInc();
                     LOG.error("replay message log failed, will retry.", e);
                 }
             }

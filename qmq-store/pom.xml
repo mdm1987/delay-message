@@ -18,10 +18,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>qmq-common</artifactId>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>qmq-server-common</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>

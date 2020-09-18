@@ -18,7 +18,7 @@ package qunar.tc.qmq.delay.config;
 
 import com.google.common.base.Preconditions;
 import qunar.tc.qmq.configuration.DynamicConfig;
-import qunar.tc.qmq.constants.BrokerConstants;
+import qunar.tc.qmq.BrokerConstants;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;

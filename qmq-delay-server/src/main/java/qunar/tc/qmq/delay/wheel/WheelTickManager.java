@@ -20,17 +20,12 @@ import com.google.common.base.Throwables;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import qunar.tc.qmq.broker.BrokerService;
 import qunar.tc.qmq.delay.DelayLogFacade;
 import qunar.tc.qmq.delay.ScheduleIndex;
 import qunar.tc.qmq.delay.Switchable;
 import qunar.tc.qmq.delay.base.LongHashSet;
 import qunar.tc.qmq.delay.config.DefaultStoreConfiguration;
 import qunar.tc.qmq.delay.config.StoreConfiguration;
-import qunar.tc.qmq.delay.monitor.QMon;
-import qunar.tc.qmq.delay.sender.DelayProcessor;
-import qunar.tc.qmq.delay.sender.Sender;
-import qunar.tc.qmq.delay.sender.SenderProcessor;
 import qunar.tc.qmq.delay.store.log.DispatchLogSegment;
 import qunar.tc.qmq.delay.store.log.ScheduleSetSegment;
 import qunar.tc.qmq.delay.store.model.DispatchLogRecord;
@@ -204,7 +199,7 @@ public class WheelTickManager implements Switchable, HashedWheelTimer.Processor 
             }
         } catch (Throwable e) {
             LOGGER.error("wheel load segment failed,currentSegmentOffset:{} until:{}", loadedCursor.baseOffset(), until, e);
-            QMon.loadSegmentFailed();
+            //QMon.loadSegmentFailed();
             return false;
         }
 
@@ -320,7 +315,7 @@ public class WheelTickManager implements Switchable, HashedWheelTimer.Processor 
      * 存在时间轮里的数据，时间到时候，需要进行的下一步处理，把消息执行发送到server实时消息服务
      */
     public void process(ScheduleIndex index) {
-        QMon.scheduleDispatch();
+        //QMon.scheduleDispatch();
         //发送到broker实时消息服务
         //sender.send(index);
         List<ScheduleIndex> list = Arrays.asList(index);

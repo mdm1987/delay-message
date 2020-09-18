@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.delay.sender;
 
@@ -34,10 +35,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+*/
 /**
  * @author xufeng.deng dennisdxf@gmail.com
  * @since 2018-08-16 21:00
- */
+ *//*
+
 class SenderExecutor implements Disposable {
     private static final int DEFAULT_SEND_THREAD = 1;
 
@@ -120,3 +123,4 @@ class SenderExecutor implements Disposable {
         groupSenders.clear();
     }
 }
+*/

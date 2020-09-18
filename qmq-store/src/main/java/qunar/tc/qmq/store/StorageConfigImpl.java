@@ -17,7 +17,7 @@
 package qunar.tc.qmq.store;
 
 import qunar.tc.qmq.configuration.DynamicConfig;
-import qunar.tc.qmq.constants.BrokerConstants;
+import qunar.tc.qmq.BrokerConstants;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;

@@ -29,7 +29,6 @@ import qunar.tc.qmq.delay.store.appender.ScheduleSetAppender;
 import qunar.tc.qmq.delay.store.model.*;
 import qunar.tc.qmq.delay.store.visitor.LogVisitor;
 import qunar.tc.qmq.delay.wheel.WheelLoadCursor;
-import qunar.tc.qmq.protocol.producer.MessageProducerCode;
 
 import java.io.File;
 import java.util.List;

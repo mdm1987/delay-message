@@ -19,7 +19,7 @@ package qunar.tc.qmq.store;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qunar.tc.qmq.concurrent.NamedThreadFactory;
-import qunar.tc.qmq.monitor.QMon;
+////import qunar.tc.qmq.monitor.//QMon;
 import qunar.tc.qmq.store.event.FixedExecOrderEventBus;
 
 import java.util.concurrent.Executors;
@@ -72,7 +72,7 @@ public class ConsumerLogFlusher implements FixedExecOrderEventBus.Listener<Messa
             return;
         }
 
-        QMon.consumerLogFlusherExceedCheckpointIntervalCountInc();
+        ////QMon.consumerLogFlusherExceedCheckpointIntervalCountInc();
         submitFlushTask();
     }
 
@@ -87,10 +87,10 @@ public class ConsumerLogFlusher implements FixedExecOrderEventBus.Listener<Messa
                 consumerLogManager.flush();
                 checkpointManager.saveMessageCheckpointSnapshot(snapshot);
             } catch (Exception e) {
-                QMon.consumerLogFlusherFlushFailedCountInc();
+                ////QMon.consumerLogFlusherFlushFailedCountInc();
                 LOG.error("flush consumer log failed. offset: {}", snapshot.getVersion(), e);
             } finally {
-                QMon.consumerLogFlusherElapsedPerExecute(System.currentTimeMillis() - start);
+                ////QMon.consumerLogFlusherElapsedPerExecute(System.currentTimeMillis() - start);
             }
         });
     }

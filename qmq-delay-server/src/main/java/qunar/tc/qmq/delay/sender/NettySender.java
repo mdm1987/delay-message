@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package qunar.tc.qmq.delay.sender;
 
@@ -28,10 +29,12 @@ import qunar.tc.qmq.util.RemotingBuilder;
 
 import java.util.List;
 
+*/
 /**
  * @author xufeng.deng dennisdxf@gmail.com
  * @since 2018-07-23 16:33
- */
+ *//*
+
 public class NettySender implements Sender {
     private final NettyClient client;
 
@@ -58,3 +61,4 @@ public class NettySender implements Sender {
     public void shutdown() {
     }
 }
+*/
